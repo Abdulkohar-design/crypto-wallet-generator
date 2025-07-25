@@ -1,0 +1,11 @@
+# This file tells Nixpacks to treat this as a Node.js project
+providers = ["node"]
+
+[phases.build]
+cmds = ["cd backend && npm install"]
+
+[phases.start]
+cmd = "cd backend && npm start"
+
+[variables]
+NODE_ENV = "production"
