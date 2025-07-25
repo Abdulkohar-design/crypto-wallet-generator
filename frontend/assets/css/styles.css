@@ -1,0 +1,405 @@
+:root {
+    --primary: #6c5ce7;
+    --primary-dark: #5649c0;
+    --secondary: #00cec9;
+    --dark: #2d3436;
+    --light: #f5f6fa;
+    --success: #00b894;
+    --danger: #d63031;
+    --warning: #fdcb6e;
+    --info: #74b9ff;
+    --gray: #636e72;
+    --gradient-bg: linear-gradient(135deg, #1e272e, #2f3640);
+    --card-bg: rgba(45, 52, 54, 0.8);
+    --border-color: rgba(99, 110, 114, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--gradient-bg);
+    color: var(--light);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.coin-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Blockchain specific colors */
+.btc { background: linear-gradient(135deg, #f7931a, #ff9500); }
+.eth { background: linear-gradient(135deg, #627eea, #4169e1); }
+.bsc { background: linear-gradient(135deg, #f0b90b, #ffd700); color: #000; }
+.sol { background: linear-gradient(135deg, #00ffbd, #00e6aa); color: #000; }
+.xrp { background: linear-gradient(135deg, #27a2db, #1e90ff); }
+.ada { background: linear-gradient(135deg, #0033ad, #0066cc); }
+.doge { background: linear-gradient(135deg, #c2a633, #daa520); }
+.ltc { background: linear-gradient(135deg, #345d9d, #4682b4); }
+.trx { background: linear-gradient(135deg, #ff060a, #ff4444); }
+.dot { background: linear-gradient(135deg, #e6007a, #ff1493); }
+.avax { background: linear-gradient(135deg, #e84142, #ff6b6b); }
+.matic { background: linear-gradient(135deg, #8247e5, #9966ff); }
+.xlm { background: linear-gradient(135deg, #000000, #333333); }
+.atom { background: linear-gradient(135deg, #2e3148, #5a5a7a); }
+.link { background: linear-gradient(135deg, #2a5ada, #4169e1); }
+.bnb { background: linear-gradient(135deg, #f3ba2f, #ffd700); color: #000; }
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in-up {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.balance-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.balance-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.balance-card:hover::before {
+    left: 100%;
+}
+
+.balance-card:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.address-box {
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 8px;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+    word-break: break-all;
+    position: relative;
+}
+
+.address-box:hover {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: var(--primary);
+}
+
+.copy-btn {
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.copy-btn:hover {
+    color: var(--secondary);
+    transform: scale(1.1);
+    background: rgba(0, 206, 201, 0.1);
+}
+
+#balanceChart {
+    max-height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.modal-content {
+    background: var(--dark);
+    color: white;
+    border: 1px solid var(--border-color);
+}
+
+.warning-banner {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid var(--danger);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(5px);
+}
+
+.blurred {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+.blurred:hover {
+    filter: blur(0);
+}
+
+/* Form controls styling */
+.form-control, .form-select {
+    background: rgba(45, 52, 54, 0.8);
+    border: 1px solid var(--border-color);
+    color: var(--light);
+    border-radius: 8px;
+}
+
+.form-control:focus, .form-select:focus {
+    background: rgba(45, 52, 54, 0.9);
+    border-color: var(--primary);
+    color: var(--light);
+    box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.25);
+}
+
+.form-control::placeholder {
+    color: var(--gray);
+}
+
+/* Button styling */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(108, 92, 231, 0.3);
+}
+
+.btn-outline-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 184, 148, 0.3);
+}
+
+.btn-outline-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(116, 185, 255, 0.3);
+}
+
+.btn-outline-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(253, 203, 110, 0.3);
+}
+
+/* Toast styling */
+.toast {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.toast-header {
+    background: var(--success);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Loading animation */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* QR Code styling */
+#qrcode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .coin-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .address-box {
+        font-size: 0.75rem;
+        padding: 8px;
+    }
+    
+    .card-body h4 {
+        font-size: 1.1rem;
+    }
+    
+    .balance-card:hover {
+        transform: scale(1.02) translateY(-3px);
+    }
+}
+
+@media (max-width: 576px) {
+    .warning-banner {
+        padding: 10px;
+    }
+    
+    .warning-banner .d-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .warning-banner i {
+        margin-bottom: 10px;
+    }
+    
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Additional animations */
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+
+.loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Security indicators */
+.security-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.security-high { background: var(--success); }
+.security-medium { background: var(--warning); }
+.security-low { background: var(--danger); }
+
+/* Balance trend indicators */
+.trend-up { color: var(--success); }
+.trend-down { color: var(--danger); }
+.trend-neutral { color: var(--gray); }
+
+/* Network status indicators */
+.network-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.network-online { background: var(--success); }
+.network-offline { background: var(--danger); }
+.network-slow { background: var(--warning); }
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .card {
+        background: white;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+    
+    .btn, .modal, .warning-banner {
+        display: none;
+    }
+}
