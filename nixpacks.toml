@@ -1,8 +1,14 @@
-# This file tells Nixpacks to treat this as a Node.js project
+# This tells Nixpacks to detect this as a Node.js project
 providers = ["node"]
 
+[phases.setup]
+nixPkgs = ["nodejs_18", "npm"]
+
+[phases.install]
+cmds = ["cd backend && npm ci"]
+
 [phases.build]
-cmds = ["cd backend && npm install"]
+cmds = ["cd backend && npm run build || echo 'No build script found'"]
 
 [phases.start]
 cmd = "cd backend && npm start"
