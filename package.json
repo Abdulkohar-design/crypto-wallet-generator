@@ -1,0 +1,19 @@
+{
+  "name": "crypto-wallet-generator",
+  "version": "1.0.0",
+  "description": "Crypto wallet generator with backend and frontend",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "build": "cd backend && npm install",
+    "dev": "cd backend && npm run dev",
+    "install-backend": "cd backend && npm install",
+    "install-frontend": "cd frontend && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["crypto", "wallet", "blockchain", "generator"],
+  "author": "VDMAX",
+  "license": "MIT"
+}
